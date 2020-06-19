@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CRUD Application</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- JS libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+    <!-- CSS libraries-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- our application styles -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- our application scripts-->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/service.js"></script>
+    <script src="scripts/directive.js"></script>
+    <script src="scripts/controller.js"></script>
+</head>
+
+<body ng-app="app">
+    <!-- Add your site or application content here -->
+    <div class="" ng-controller="appController">
+        <div class="form-container">
+            <h3 style="text-align: center;">Add Employee</h3>
+            <form name="employee-form" ng-submit="create(employee)">
+                <label for="name">Employee Name:</label><br>
+                <input type="text" id="name" ng-model="employee.employee_name" autocomplete="false"><br>
+                <label for="age">Employee Age:</label><br>
+                <input type="text" id="age" ng-model="employee.employee_age" autocomplete="false"><br>
+                <label for="salary">Employee Salary:</label><br>
+                <input type="text" id="salary" ng-model="employee.employee_salary" autocomplete="false"><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div>
+            <table cellpadding="0" cellspacing="0" ng-init="getList()">
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Salary</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <tbody ng-repeat="emp in employees">
+                    <tr>
+                        <td>{{emp.employee_name}}</td>
+                        <td>{{emp.employee_age}}</td>
+                        <td>{{emp.employee_salary}}</td>
+                        <td style="text-align: center;color: green;" ng-click="edit(emp)">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </td>
+                        <td style="text-align: center;color: red;" ng-click="delete(emp)">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
